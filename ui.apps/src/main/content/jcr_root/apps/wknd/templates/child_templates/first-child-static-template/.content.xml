@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:description="First Child Template  to check allowedChildren and cq:allowedParents of Template "
+    jcr:primaryType="cq:Template"
+    jcr:title="First Child Template"
+    allowedChildren="[/apps/wknd/templates/sub_child_templates/.*]"
+    allowedParents="[/apps/wknd/templates/sub_child_templates/.*]"
+    allowedPaths="[/content/wknd(/.*)?]"
+    ranking="{Long}2">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="/apps/wknd/components/structure/page"/>
+</jcr:root>

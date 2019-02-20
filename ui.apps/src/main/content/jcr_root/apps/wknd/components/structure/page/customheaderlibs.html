@@ -1,0 +1,112 @@
+<!--/*
+    Copyright 2017 Adobe Systems Incorporated
+  
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+  
+        http://www.apache.org/licenses/LICENSE-2.0
+  
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/-->
+
+<!--before-->
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.js @ categories='wknd.dependencies'}"/>
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.css @ categories='wknd.base'}"/>
+<!--after-->
+
+<!--/* Load authoring related client libraries */-->
+<sly data-sly-test="${wcmmode.preview || wcmmode.edit}" data-sly-call="${clientLib.all @ categories='wknd.author'}"/>
+
+
+
+<!--/* Include Context Hub */-->
+<sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
+
+Hello
+ <!--/* hello is name of the node with which it will be created */-->
+<sly data-sly-resource="${'hello' @ resourceType='wknd/components/content/helloworld'}"/>
+<sly data-sly-resource="${'hello2' @ resourceType='wknd/components/content/helloworld',selectors='a'}"/>
+<br/>
+<sly data-sly-resource="${'hello3' @ resourceType='wknd/components/content/helloworld',selectors=['b','c']}"/>
+
+
+<!--/* second way to access a resource and create a node with name hello123 . only thing to notice there is no cotes around hellopath*/-->
+<!--/* when we pass the name in single cote it is name, then its the relative path, under jcr:content of the current page */-->
+<!--/* when we are not passing  the name in single cote then it should be the full path */-->
+
+<sly data-sly-test.hellopath="${resource.path}/hello123" />
+<br/>
+${hellopath}
+<br/>
+<sly data-sly-resource="${hellopath @ resourceType='wknd/components/content/helloworld',selectors=['b','c']}"/>
+<br/>
+<!--/* This one also same as above one */-->
+<sly data-sly-test.hellopath="${resource.path}" />
+<sly data-sly-resource="${hellopath @ resourceType='wknd/components/content/helloworld',appendPath='hello123',selectors=['b','c']}"/>
+<br/>
+<!--/* This one also same as above one */-->
+<!--/* selectors attribute will remove any existing selectors and adds the new ones */-->
+<sly data-sly-test.path2="${resource.path}" />
+<sly data-sly-resource="${'hello123' @ resourceType='wknd/components/content/helloworld',prependPath=path2,selectors=['b','c']}"/>
+<br/>
+<!--/* This one also same as above one */-->
+<!--/* addSeelectors attribute will add selectors to existing selectors*/-->
+<!--/* wcmmode='disabled' is used to disable the edit mode  for the component*/-->
+<sly data-sly-test.path3="${resource.path}" />
+<sly data-sly-resource="${'hello123' @ resourceType='wknd/components/content/helloworld',prependPath=path3,addSelectors='a',wcmmode='disabled'}"/>
+
+<br/>
+<sly data-sly-test.path3="${resource.path}" />
+<sly data-sly-resource="${'hello123.a.html' @ resourceType='wknd/components/content/helloworld',prependPath=path3,wcmmode='disabled'}"/>
+
+<br/>
+<sly data-sly-test.path3="${resource.path}" />
+<sly data-sly-resource="${'hello123.a.html' @ resourceType='wknd/components/content/helloworld',selectors=['b','c'],prependPath=path3}"/>
+<br/>
+<!--/*removeSelectors will remove all the selectors  */-->
+<sly data-sly-test.path3="${resource.path}" />
+<sly data-sly-resource="${'hello123.a.b.c.html' @ resourceType='wknd/components/content/helloworld',removeSelectors,prependPath=path3}"/>
+
+
+
+<template data-sly-template.one><h1>blah</h1></template>
+<div data-sly-call="${one}"></div>
+
+<template data-sly-template.two="${ @ title}"><h1>${title}</h1></template>
+<div data-sly-call="${two @ title=properties.jcr:title}"></div>
+
+<h3>Sling PropertiesObject</h3>
+<p>Page Title : ${properties.jcr:title}</p>
+
+<h3>Page Details</h3>
+<p>currentPage Title: ${currentPage.Title}</p>
+<p>currentPage Name: ${currentPage.Name}</p>
+<p>currentPage Path: ${currentPage.Path}</p>
+<p>currentPage Depth: ${currentPage.Depth}</p>
+
+<h3> Node Details </h3>
+<p>currentNode Name: ${currentNode.Name}</p>
+<p>currentNode Path: ${currentNode.Path}</p>
+<p>currentNode Depth: ${currentNode.Depth}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

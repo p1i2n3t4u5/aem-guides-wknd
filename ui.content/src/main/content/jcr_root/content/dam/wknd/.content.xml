@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="sling:OrderedFolder">
+    <jcr:content
+        jcr:primaryType="nt:unstructured"
+        jcr:title="WKND Site">
+        <folderThumbnail/>
+    </jcr:content>
+    <asset.jpg/>
+    <Capture.PNG/>
+    <thumbnail_x0020__x0028_1_x0029_.png/>
+    <thumbnail1.png/>
+    <christian-schrader-1204549-unsplash.jpg/>
+    <ilkka-karkkainen-1203566-unsplash.jpg/>
+    <johanna-buguet-1203290-unsplash.jpg/>
+    <masha-glebova-1203592-unsplash.jpg/>
+    <masha-glebova-1203618-unsplash.jpg/>
+    <swan-leroi-1204944-unsplash.jpg/>
+    <swan-leroi-1204954-unsplash.jpg/>
+    <content-fragment-folder/>
+</jcr:root>
